@@ -4,18 +4,20 @@ const Detail = styled.div`
   margin-left: 2rem;
 `;
 
-const Image = styled.div`
-  cursor:pointer;
-  margin-left: 2rem;
-  padding-top: 1rem;
-`;
-
 const Header = styled.h3`
   font-size: 0.8rem;
+  max-width: 16rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media screen and (min-width: 1400px) {
+    font-size: 1rem;
+  }
 `
 
 
-export default function Beers({ name, image_url, description, yeast, ingredients}) {
+export default function Beers({ name, image_url, description, ingredients}) {
 
   return (
       <div className="beer-item">
@@ -24,7 +26,7 @@ export default function Beers({ name, image_url, description, yeast, ingredients
         </span>
         <Detail>
         <Header>{name}</Header>
-        <p className="yeast">{yeast}</p>
+        <p className="yeast">{ingredients.yeast}</p>
         <p className="description">{description}</p>
         </Detail>
       </div>
