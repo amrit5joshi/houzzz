@@ -5,31 +5,31 @@ import axios from "axios";
 import Beers from './Components/Beer';
 import styled from "styled-components";
 
-const Content = styled.div`
-  background: white;
-  box-shadow: 0 0.8rem 0.8rem -1.2rem black;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  height: fit-content;
-  justify-content: space-between;
-  margin: 0.1rem;
-  padding: 0.2rem 0.6rem;
+import "antd/lib/spin/style/index.css";
+import { Spin } from "antd";
 
-  @media only screen and (min-width: 1400px) {
-    margin: 0.2rem;
-    padding: 0.5rem 1rem;
-  }
+const BeerList = styled.div`
+  background: white;
+  display: flex;
+  flex-direction: row;
+  height: fit-content;
+  padding: 0.2rem 0.6rem;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  margin:auto;
+  margin-top: 3rem;
+  justify-content: space-around;
 `;
 
 function App() {
   const [beers, setBeers] = useState([]);
   const [spin, setSpin] = useState(true);
   const [count, setCount] = useState(1);
-  const increaseCount = () => setCount(count+1) 
+  const increaseCount = () => setCount(count+1);
+  const resetCount = () => setCount(1);
   const fetchCourses = async () => {
     await axios
-      .get(endpoint.apiUrl+"beers?page="+count+"&per_page=10")
+      .get(endpoint.apiUrl+"beers?page="+count+"&per_page=6")
       .then((res) => {
         setBeers(res.data)
         setSpin(false);
@@ -40,25 +40,54 @@ function App() {
   };
 
   useEffect(() => {
+    setSpin(true);
     fetchCourses();
   },[count]);
 
   return (
-    <Content>
-         <div className="App">
-     {   spin ? "...Loading":
+    <>
+      <BeerList>
+     {   spin ? 
+     (
+      <Spin
+        tip="Loading..."
+        size="large"
+        style={{
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+        }}
+      />
+    ) 
+     : beers.length === 0 ? 
+     (<div style={{
+      position: "absolute",
+      top: "50%",
+      left: "50%",
+      transform: "translate(-50%, -50%)",
+    }}>Seems like You have reached end of the list...<button onClick={resetCount} className="reset-button">Start Again</button></div>) 
+     :
      beers.map((beer) => (
           <Beers
             key={beer.id}
             image_url = {beer.image_url}
             description={beer.description}
-            id={beer.id}
             name={beer.name}
+            yeast={beer.name}
+            ingredients={beer.ingredients}
           />
           ))}
-    </div>
-    <button onClick={increaseCount} >Load More</button>
-    </Content>
+    </BeerList>
+    {spin? "":
+ (<div className="text-center">
+ {
+   beers.length !== 0 && <button onClick={increaseCount} className="load-button">Load More&nbsp;&nbsp;<i className="arrow down"></i></button>
+ }
+ </div>)
+    }
+   
+    </>
   );
 }
 

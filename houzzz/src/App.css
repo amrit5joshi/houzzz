@@ -1,63 +1,98 @@
-.App {
+.beer-item
+{
+  flex: 50%;
+  background: white;
+  box-shadow: 0px 0px 4px 1px #bfbbb0;
+  display: flex;
+  flex-direction: row;
+  height: 120px;
+  max-width: 400px;
+  border-radius: 0.5rem;
+
+  padding: 0.5rem 1rem;
+  
+  margin-bottom: 1.5rem;
+
+  @media only screen and (max-width: 1000px) {
+    margin: 0.1rem;
+    padding: 0.2rem 0.5rem;
+    font-size: 0.1rem;
+  }
+}
+
+.description{
+  overflow:auto;
+  -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none; 
+  height: 50px;
+  font-size: 0.6rem;
+}
+
+.description::-webkit-scrollbar { 
+  display: none;  /* Safari and Chrome */
+}
+
+.text-center {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.text-center button {
+  border: none;
+  background-color: white;
+  
+  color: #0469C4;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.reset-button{
+  border: none;
+  background-color: white;
+  
+  color: #0469C4;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
 }
 
-.App-link {
-  color: #61dafb;
+.arrow {
+  border: solid #0469C4;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+  margin-bottom: 1.5px;;
+  color: #0469C4;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.hovertext {
-  position: relative;
-  border-bottom: 1px dotted black;
+.yeast{
+  font-size: 0.6rem;
+  padding: 0;
+  color: #D6A138;
 }
 
 .hovertext:before {
-  content: attr(data-hover);
+  content:  attr(data-hover);;
   visibility: hidden;
   opacity: 0;
-  width: 140px;
+  width: fit-content;
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 5px;
-  padding: 5px 0;
+  padding: 1px 1px;
   transition: opacity 1s ease-in-out;
-
   position: absolute;
   z-index: 1;
-  left: 0;
-  top: 110%;
+  left: -60%;
+  top: -25%;
+}
+
+.hovertext {
+  cursor:pointer;
+  margin-left: 2rem;
+  padding-top: 1rem;
+  font-size:0.8rem;
+  position: relative;
 }
 
 .hovertext:hover:before {
