@@ -15,10 +15,14 @@ const BeerList = styled.div`
   height: fit-content;
   padding: 0.2rem 0.6rem;
   flex-wrap: wrap;
-  max-width: 920px;
+  max-width: 400px;
   margin:auto;
   margin-top: 3rem;
   justify-content: space-around;
+
+  @media screen and (min-width: 1000px) {
+    max-width: 920px;
+  }
 `;
 
 function App() {

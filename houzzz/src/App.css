@@ -1,26 +1,24 @@
-.beer-item
-{
+.beer-item {
   flex: 50%;
   background: white;
   box-shadow: 0px 0px 4px 1px #bfbbb0;
   display: flex;
   flex-direction: row;
   height: 120px;
-  max-width: 400px;
+  max-width: 300px;
   border-radius: 0.5rem;
-  padding: 0.5rem 1rem;
+  padding: 0.1rem 1rem;
   margin-bottom: 1rem;
 }
 
-.description{
+.description {
   overflow: hidden;
   text-overflow: ellipsis;
-  height: 35px;
-  line-height:120%;
+  height: 45px;
+  line-height: 120%;
   font-size: 0.8rem;
   display: -webkit-box;
-  line-height: 1.4;
-  -webkit-line-clamp: 2;
+  -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -33,14 +31,12 @@
 .text-center button {
   border: none;
   background-color: white;
-  
   color: #0469C4;
 }
 
-.reset-button{
+.reset-button {
   border: none;
   background-color: white;
-  
   color: #0469C4;
 }
 
@@ -54,11 +50,11 @@
   border-width: 0 3px 3px 0;
   display: inline-block;
   padding: 3px;
-  margin-bottom: 1.5px;;
+  margin-bottom: 1.5px;
   color: #0469C4;
 }
 
-.yeast{
+.yeast {
   font-size: 0.6rem;
   padding: 0;
   margin-top: -0.5rem;
@@ -71,27 +67,25 @@
 }
 
 .hovertext:before {
-  content:  attr(data-hover);;
+  content: attr(data-hover);
   visibility: hidden;
   opacity: 0;
   width: fit-content;
   background-color: black;
   color: #fff;
   text-align: center;
-  border-radius: 5px;
   padding: 1px 1px;
-  transition: opacity 1s ease-in-out;
   position: absolute;
   z-index: 1;
   left: -60%;
-  top: -25%;
+  top: -16%;
 }
 
 .hovertext {
-  cursor:pointer;
+  cursor: pointer;
   margin-left: 2rem;
   padding-top: 1rem;
-  font-size:0.8rem;
+  font-size: 0.8rem;
   position: relative;
 }
 
@@ -100,20 +94,36 @@
   visibility: visible;
 }
 
-@media screen and (min-width: 1400px) {
-  .hovertext {
-    font-size:1rem;
+@media screen and (min-width: 1000px) {
+  .hovertext:before {
+    font-size: 0.9rem;
+    top: -19%;
   }
 
-  .description{
-    font-size:0.8rem;
+  .description {
+    font-size: 0.9rem;
+    -webkit-line-clamp: 2;
+    height: 37px
   }
 
-  .yeast{
+  .yeast {
     font-size: 0.8rem;
   }
 
-  .beer-item{
+  .beer-item {
     margin-bottom: 1.5rem;
+    max-width: 400px;
   }
+}
+
+.arrow-down {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 10px solid black;
+}
+
+.image-beer {
+  position: relative;
 }
