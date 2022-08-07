@@ -33,7 +33,7 @@ function App() {
   const resetCount = () => setCount(1);
   const fetchCourses = async () => {
     await axios
-      .get(endpoint.apiUrl + "beers?page=" + count + "&per_page=6")
+      .get(endpoint.apiUrl + "beers?page=" + count + "&per_page=10")
       .then((res) => {
         setBeers(res.data)
         setSpin(false);
