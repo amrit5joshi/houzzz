@@ -28,9 +28,9 @@ export default function Beers({ name, image_url, description, ingredients }) {
 
   return (
     <div className="beer-item">
-      <span className="hovertext" data-hover={`Ingredient: ${Object.keys(ingredients).join(',')}`} ><div style={{ visibility: show ? "visible" : "hidden" }} className="arrow-down"></div>
-        <img className="image-beer" src={image_url} width="20" height="80" onMouseEnter={toggleTriangle}
-          onMouseLeave={toggleTriangle} />
+      <span className="hovertext" onMouseEnter={toggleTriangle}
+        onMouseLeave={toggleTriangle} data-hover={`Ingredient: ${Object.keys(ingredients).join(',')}`} ><div style={{ visibility: show ? "visible" : "hidden" }} className="arrow-down"></div>
+        <img className="image-beer" src={image_url} width="20" height="80" />
       </span>
       <Detail>
         <Header>{name}</Header>
