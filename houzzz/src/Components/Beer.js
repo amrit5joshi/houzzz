@@ -18,7 +18,6 @@ const Header = styled.h3`
   }
 `
 
-
 export default function Beers({ name, image_url, description, ingredients }) {
   const [show, setShow] = useState(false);
 
